@@ -2,15 +2,19 @@ import { func } from "prop-types";
 import {useState, useEffect} from "react";
 
 function Hello(){
-  function destoryedFn(){
-    console.log("bye :(");
-  }
-  function effectFn(){
-    console.log("create :)");
-    return destoryedFn;
-  }
+
+  useEffect(()=>{
+    console.log("hi :)");
+    return () => console.log("bye :(");
+  },[]);
+
+  useEffect(function (){
+    console.log("hi :)");
+    return function(){
+      console.log("bye :(");
+    };
+  },[]);
   
-  useEffect(effectFn,[]);
   return <h1>Hello</h1>;
 }
 
