@@ -18,7 +18,6 @@ function Home() {
     getMovies();
   },[]);
 
-  console.log(movies);
   return (
     <div>{loading ? <h1>Loading...</h1> : 
       <div>
@@ -26,6 +25,7 @@ function Home() {
           <Movie
             // key는 React.js에서만, map 안에서 component들을 render할 때 사용
             key={movie.id} 
+            id={movie.id}
             coverImg={movie.medium_cover_image} 
             title={movie.title} 
             summary={movie.summary} 
